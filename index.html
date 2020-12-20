@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player App</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <style>
+    .visually-hidden {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+    .playback-controls button {
+      margin-right: 1rem;
+    }
+
+    .playback-controls button:last-child {
+      margin-right: 0;
+    }
+
+    .progress {
+      height: 3px;
+      width: 0px;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Music Player</h1>
+    <p class="lead">A simple music player that uses Media Session API to enhance the media playback experience. Music
+      courtesy - <a href="https://www.bensound.com/">Bensound</a>.</p>
+
+    <h3>Playlist</h3>
+    <div class="player">
+      <!-- Inject player here... -->
+    </div>
+
+    <div class="media-controls">
+      <!-- Progress bar -->
+      <div class="progress bg-success"></div>
+      <div class="playback-controls text-center">
+        <button id="previousButton" type="button" class="btn btn-sm rounded-circle">
+          <span aria-hidden="true"><i class="fas fa-step-backward"></i></span>
+          <span class="visually-hidden">Previous Track</span>
+        </button>
+        <button id="backwardButton" type="button" class="btn btn-sm rounded-circle">
+          <span aria-hidden="true"><i class="fas fa-backward"></i></span>
+          <span class="visually-hidden">Seek Backward</span>
+        </button>
+        <button id="playPauseButton" type="button" class="btn btn-lg rounded-circle">
+          <span aria-hidden="true"><i class="fas fa-play"></i></span>
+          <span class="visually-hidden">Play</span>
+        </button>
+        <button id="forwardButton" type="button" class="btn btn-sm rounded-circle">
+          <span aria-hidden="true"><i class="fas fa-forward"></i></span>
+          <span class="visually-hidden">Seek Forward</span>
+        </button>
+        <button id="nextButton" type="button" class="btn btn-sm rounded-circle">
+          <span aria-hidden="true"><i class="fas fa-step-forward"></i></span>
+          <span class="visually-hidden">Next Track</span>
+        </button>
+      </div>
+    </div>
+
+    <h3>Browser Support</h3>
+    <p class="ciu_embed" data-feature="mdn-api__MediaSession" data-periods="future_1,current,past_1,past_2"
+      data-accessible-colours="false">
+    <p>Data on support for the mdn-api__MediaSession feature across the major browsers</p>
+    </p>
+  </div>
+  <script src="./src/main.js"></script>
+  <script>
+    const playlistData = [
+      new MusicMeta({ title: 'Memories', artist: 'Benjamin Tissot', album: 'Bensound', slug: 'memories' }),
+      new MusicMeta({ title: 'Sunny', artist: 'Benjamin', album: 'Bensound', slug: 'sunny' }),
+      new MusicMeta({ title: 'Once again', artist: 'Benjamin T.', album: 'Bensound', slug: 'onceagain' }),
+    ];
+
+    new MusicPlayer(document.querySelector('.player'), playlistData);
+  </script>
+  <script src="https://kit.fontawesome.com/95fdcab01e.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
+</body>
+
+</html>
